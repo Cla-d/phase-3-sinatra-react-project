@@ -16,17 +16,22 @@ class ApplicationController < Sinatra::Base
     @tasks = Task.all.to_json
   end
 
-  
-  get 'tasks/:id' do 
-    tasks = Task.find(params[:id])
-    task.to_json
+  get '/user/:id' do
+    @user = User.find(params[:id])
+    @user.to_json(include: :tasks)
   end
 
+  get '/task/:id' do
+    @task = Task.find(params[:id])
+    @task.to_json(include: :users)
+  end
+  
+ 
   #create a new user
-  #post "/users" do 
-    #new_user = User.create(name: params[:name], email: params[:email])
-    #new_user.to_json
- # end
+  post "/users" do 
+    new_user = User.create(name: params[:name], email: params[:email])
+    new_user.to_json
+  end
 
   #create a new task
   #post '/users/:user_id/tasks' do 
