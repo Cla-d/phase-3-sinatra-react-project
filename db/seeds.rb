@@ -1,22 +1,14 @@
 puts "🌱 Seeding spices..."
 
 # Seed your database here
-user1= User.create(name:"Daryl")
-user2= User.create(name:"Joy")
-user3= User.create(name:"Amy")
-user4= User.create(name:"Maxwell")
-user5= User.create(name:"Mumin")
+50.times do
+    User.create({username: Faker::Name.first_name, password: Faker::Name.last_name})
+end
 
-Task.create(name:"Workout", user_id:3)
-Task.create(name:"Read a novel", user_id:3)
-Task.create(name:"Go jogging", user_id:2)
-Task.create(name:"Meal prep", user_id:1)
-Task.create(name:"Shopping", user_id:4)
-Task.create(name:"Make a call", user_id:5)
-Task.create(name:"Visit family", user_id:2)
-Task.create(name:"Visit the museum", user_id:1)
-Task.create(name:"Study", user_id:4)
-Task.create(name:"Bike ride", user_id:5)
-
+Task.create({name: "Shopping", status:"Complete", description: "easy", duedate:12032021, user_id:User.all.sample.id,})
+Task.create({name: "Read", status:"Complete", description: "intermediate", duedate:15032021, user_id:User.all.sample.id, })
+Task.create({name: "Hiking", status:"Incomplete", description: "difficult", duedate:17032021,  user_id:User.all.sample.id})
+Task.create({name: "Yoga", status:"Complete", description: "intermediate", duedate:20032021, user_id:User.all.sample.id})
+Task.create({name: "Watch movie", status:"Complete", description: "easy", duedate:21032021, user_id:User.all.sample.id})
 
 puts "✅ Done seeding!"
