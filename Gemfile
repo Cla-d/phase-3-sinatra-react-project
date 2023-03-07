@@ -31,14 +31,17 @@ gem "rake", "~> 13.0"
 # Provides functionality to interact with a SQLite3 database
 gem "sqlite3", "~> 1.4"
 
-gem 'bcrypt', '~> 3.1.7'
-
-gem 'faker'
 # Require all files in a folder
 gem "require_all", "~> 3.0"
 
 # These gems will only be used when we are running the application locally
 group :development do
+  # Used to generate seed data
+  # https://github.com/faker-ruby/faker
+  gem "faker", "~> 2.18"
+
+  gem 'bcrypt', '~> 3.1.2'
+
   gem "pry", "~> 0.14.1"
 
   # Automatically reload when there are changes
