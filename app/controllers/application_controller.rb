@@ -14,4 +14,10 @@ class ApplicationController < Sinatra::Base
     @tasks =Task.all.to_json
   end
 
+  
+
+  get '/task/:id' do
+    @task = Task.find(params[:id])
+    @task.to_json(include: :user)
+  end
 end
